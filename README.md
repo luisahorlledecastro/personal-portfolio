@@ -1,7 +1,6 @@
 # Luísa Hörlle de Castro - Professional Portfolio
 
-A clean, modern, and technical portfolio built with React, TypeScript, and Tailwind CSS. This project showcases my journey from Physics to Cognitive Science and Data Science, highlighting key technical projects with deep-dive case studies and code snippets.
-
+A clean, modern, and technical portfolio built with React, TypeScript, and Tailwind CSS.
 ## 🚀 Features
 
 - **Technical Case Studies:** Detailed breakdowns of machine learning and computer vision projects.
