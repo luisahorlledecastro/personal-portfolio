@@ -2,7 +2,7 @@ import { PortfolioData } from "./types";
 
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "Luísa Hörlle de Castro",
-  titles: ["M.Sc. Data Science Student", "Hapkido Instructor"],
+  titles: ["M.Sc. Data Science Student", "Creative Technologist @ Study Battle", "Hapkido Instructor"],
   summary: "Data science student interested in applying machine learning to cognition and health. Motivated by finding solutions to real-world problems. In my free time, I enjoy playing the guitar and practising calisthenics.",
   contact: {
     email: "luisa@iservport.com",
@@ -47,6 +47,16 @@ export const PORTFOLIO_DATA: PortfolioData = {
   ],
   experience: [
     {
+      period: "02.2026 – Present",
+      role: "Creative Technologist",
+      company: "STUDY BATTLE",
+      bullets: [
+        "Conceived the original product concept and designed the visual identity, creating a unique \"arcade-retro\" aesthetic with high-fidelity glassmorphism.",
+        "Implemented the front-end application using advanced agentic-assisted coding workflows to accelerate development and maintain high code quality.",
+        "Architected an AI-native educational platform that transforms static documents into personalised gamified quizzes using LLM parsing."
+      ]
+    },
+    {
       period: "09.2022 – 02.2024",
       role: "Working student / content author",
       company: "ANTON App",
@@ -80,7 +90,6 @@ export const PORTFOLIO_DATA: PortfolioData = {
       description: "Bachelor thesis which aimed to investigate potential groups of participants using K-means clustering on Representational Similarity Matrices containing physiological responses to emotional images.",
       challenge: "Physiological data is notoriously noisy and highly individual. Traditional analysis often averages out the very variability that contains the most interesting psychopathological signals.",
       approach: "I utilized Representational Similarity Analysis (RSA) to preserve the structure of individual responses. By constructing similarity matrices and applying K-means clustering, I was able to identify stable patterns of emotional reactivity across different participant groups.",
-      impact: "The study successfully identified distinct clusters that correlated with specific psychopathological traits, suggesting that 'variability' itself is a structured and valuable biomarker in cognitive research.",
       codeLanguage: "python",
       codeSnippet: `def compute_rsm(data):
     """Computes Representational Similarity Matrix using correlation."""
@@ -110,7 +119,6 @@ def cluster_responses(rsm, n_clusters=3):
       description: "A comparative approach to diagnosing Polycystic Ovary Syndrome using ultrasound imaging, contrasting traditional feature extraction with deep learning architectures.",
       challenge: "Medical ultrasound images are often low-contrast and contain speckle noise, making automated follicle detection difficult for standard algorithms.",
       approach: "I implemented a dual-pipeline: one using classical OpenCV techniques (Canny edge detection, Hough transforms) and another using a custom CNN architecture. This allowed for a direct performance benchmark of 'explainable' vs 'black-box' models.",
-      impact: "The CNN outperformed classical methods in accuracy, but the classical approach provided valuable insights into the specific geometric features that the deep learning model was likely prioritizing.",
       codeLanguage: "python",
       codeSnippet: `class PCOS_CNN(nn.Module):
     def __init__(self):
@@ -151,7 +159,6 @@ def cluster_responses(rsm, n_clusters=3):
       description: "Train delay prediction in Berlin, implemented as ANN and OLS models to compare their efficiency.",
       challenge: "Urban transit data is highly non-linear, influenced by weather, time-of-day, and cascading delays from other lines.",
       approach: "I built a data ingestion pipeline to scrape real-time S-Bahn data. I then compared a Linear Regression (OLS) baseline against a multi-layer Artificial Neural Network to capture non-linear temporal patterns.",
-      impact: "The ANN demonstrated a significant reduction in Mean Squared Error over the linear model, particularly during peak hours where cascading delays are most prevalent.",
       codeLanguage: "python",
       codeSnippet: `def build_ann_model(input_dim):
     """Constructs a deep neural network for non-linear delay prediction."""
@@ -172,6 +179,58 @@ def cluster_responses(rsm, n_clusters=3):
       ],
       technologies: ["Tensorflow", "Statsmodels", "Scikit-learn", "Pandas", "Seaborn", "BeautifulSoup", "Git", "Docker"],
       githubUrl: "https://github.com/luisahorlledecastro/AI-CPS"
+    },
+    {
+      id: "personal-portfolio",
+      title: "Personal Portfolio",
+      subtitle: "Vibe Coding & Agentic AI",
+      description: "A clean, modern online portfolio built using agentic coding principles to showcase a journey from Physics to Data Science.",
+      challenge: "Creating a professional presence that balances academic rigor with modern technical skills, while experimenting with AI-driven development workflows.",
+      approach: "I used a 'vibe coding' approach, collaborating with an AI agent to iterate rapidly on design and implementation. The project features a custom arcade-inspired aesthetic, GitHub API integration, and automated deployment pipelines.",
+      codeLanguage: "typescript",
+      codeSnippet: `// Example of the GitHub Actions deployment workflow
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install && npm run build
+      - uses: actions/deploy-pages@v4`,
+      highlights: [
+        "Built using Vibe Coding and Agentic AI principles",
+        "Custom arcade-inspired UI with Tailwind CSS 4",
+        "Automated CI/CD pipeline via GitHub Actions",
+        "Responsive design with deep-dive technical case studies"
+      ],
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Motion", "Vite", "GitHub Actions"],
+      githubUrl: "https://github.com/luisahorlledecastro/portfolio"
+    },
+    {
+      id: "task-meteor",
+      title: "Task Meteor",
+      subtitle: "Productivity & Velocity",
+      description: "A high-performance task management application designed for rapid entry and visual clarity, featuring real-time updates and a meteor-themed UI.",
+      challenge: "Balancing complex state management with a lightweight, fast-feeling user experience that encourages consistent usage.",
+      approach: "I implemented a custom state synchronization layer to ensure zero-latency UI updates. The interface uses a 'velocity-first' design language, where tasks are treated as high-speed objects with clear trajectories.",
+      codeLanguage: "typescript",
+      codeSnippet: `// Meteor-inspired task priority calculation
+function calculateVelocity(task) {
+  const timeWeight = (Date.now() - task.createdAt) / 1000;
+  const priorityFactor = task.priority === 'high' ? 2.5 : 1.0;
+  return (task.complexity * priorityFactor) / Math.log(timeWeight + 2);
+}`,
+      highlights: [
+        "Real-time state synchronization with zero-latency UI",
+        "Meteor-themed visual design with custom animations",
+        "High-velocity task entry system",
+        "Performance-optimized React architecture"
+      ],
+      technologies: ["React", "Zustand", "Tailwind CSS", "Motion", "Firebase"],
+      githubUrl: "https://github.com/luisahorlledecastro/task-meteor"
     }
   ],
   certificates: [
@@ -192,6 +251,12 @@ def cluster_responses(rsm, n_clusters=3):
       institution: "Wesleyan University through Coursera",
       description: "Five individual courses focusing on different aspects of writing, such as character development and style.",
       category: "Writing"
+    },
+    {
+      title: "Create a Social Media Marketing Campaign",
+      institution: "University of Leeds and Institute of Coding",
+      description: "Explored how companies use digital marketing and learned what goes into planning and running a successful campaign, including how to create and measure the success of a social media marketing campaign.",
+      category: "Marketing"
     }
   ],
   languages: ["English - C2", "German - C1", "Portuguese - native", "French - A2"]

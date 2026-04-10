@@ -3,14 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import GithubProjects from "./components/GithubProjects";
 import CVPage from "./components/CVPage";
 import ProjectDetail from "./components/ProjectDetail";
 import { PORTFOLIO_DATA } from "./constants";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { Mail, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
 
 function HomePage() {
   const { contact } = PORTFOLIO_DATA;
@@ -28,7 +29,7 @@ function HomePage() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="bg-zinc-900 text-white rounded-[2rem] p-8 md:p-12 border-[3px] border-zinc-900 shadow-[8px_8px_0px_0px_rgba(99,102,241,0.2)] relative overflow-hidden"
+          className="bg-zinc-900 dark:bg-zinc-800 text-white rounded-[2rem] p-8 md:p-12 border-[3px] border-zinc-900 dark:border-zinc-700 shadow-[8px_8px_0px_0px_rgba(99,102,241,0.2)] relative overflow-hidden"
         >
           {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl -mr-24 -mt-24" />
@@ -92,17 +93,27 @@ function HomePage() {
   );
 }
 
+function AnimatedRoutes() {
+  const location = useLocation();
+  
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/cv" element={<CVPage />} />
+        <Route path="/project/:id" element={<ProjectDetail />} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-zinc-50">
+      <div className="min-h-screen flex flex-col bg-zinc-50 transition-colors duration-300">
         <Header />
         
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/cv" element={<CVPage />} />
-          <Route path="/project/:id" element={<ProjectDetail />} />
-        </Routes>
+        <AnimatedRoutes />
 
         <footer className="py-12 mt-auto p-4">
           <div className="max-w-7xl mx-auto bg-white border-[3px] border-zinc-900 rounded-[2rem] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">

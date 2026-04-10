@@ -12,8 +12,8 @@ export default function ProjectDetail() {
   if (!project) {
     return (
       <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-        <h2 className="text-2xl font-bold text-zinc-900 mb-4">Project not found</h2>
-        <Link to="/" className="text-zinc-500 hover:text-zinc-900 underline">Return home</Link>
+        <h2 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4">Project not found</h2>
+        <Link to="/" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white underline">Return home</Link>
       </div>
     );
   }
@@ -33,9 +33,9 @@ export default function ProjectDetail() {
         Back to projects
       </Link>
 
-      <div className="bg-white rounded-[2.5rem] border-[3px] border-zinc-900 overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] border-[3px] border-zinc-900 dark:border-zinc-800 overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.05)] transition-colors duration-300">
         {/* Hero Section */}
-        <div className="bg-zinc-900 p-8 md:p-16 text-white relative overflow-hidden">
+        <div className="bg-zinc-900 dark:bg-zinc-950 p-8 md:p-16 text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl -mr-32 -mt-32" />
           
           <div className="flex flex-wrap items-center gap-3 mb-6 relative z-10">
@@ -60,11 +60,11 @@ export default function ProjectDetail() {
 
         <div className="p-8 md:p-16 space-y-20">
           {/* Stack */}
-          <section className="pb-12 border-b-4 border-zinc-900">
-            <h2 className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-8">Technical Stack</h2>
+          <section className="pb-12 border-b-4 border-zinc-900 dark:border-zinc-800">
+            <h2 className="text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.2em] mb-8">Technical Stack</h2>
             <div className="flex flex-wrap gap-3">
               {project.technologies.map(tech => (
-                <span key={tech} className="px-5 py-2 bg-white text-zinc-900 rounded-full text-xs font-black border-[3px] border-zinc-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                <span key={tech} className="px-5 py-2 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-full text-xs font-black border-[3px] border-zinc-900 dark:border-zinc-700 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
                   {tech}
                 </span>
               ))}
@@ -74,25 +74,25 @@ export default function ProjectDetail() {
           {/* Overview & Challenge */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <section>
-              <h2 className="text-xl font-black text-zinc-900 mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#FFB7CE] border-[3px] border-zinc-900 rounded-xl flex items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+              <h2 className="text-xl font-black text-zinc-900 dark:text-white mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#FFB7CE] border-[3px] border-zinc-900 dark:border-zinc-800 rounded-xl flex items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
                   <Target size={20} className="text-zinc-900" />
                 </div>
                 The Challenge
               </h2>
-              <p className="text-zinc-600 leading-relaxed text-sm font-medium">
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm font-medium">
                 {project.challenge || project.description}
               </p>
             </section>
 
             <section>
-              <h2 className="text-xl font-black text-zinc-900 mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#B2F2BB] border-[3px] border-zinc-900 rounded-xl flex items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+              <h2 className="text-xl font-black text-zinc-900 dark:text-white mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#B2F2BB] border-[3px] border-zinc-900 dark:border-zinc-800 rounded-xl flex items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
                   <Lightbulb size={20} className="text-zinc-900" />
                 </div>
                 The Approach
               </h2>
-              <p className="text-zinc-600 leading-relaxed text-sm font-medium">
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm font-medium">
                 {project.approach || "A systematic data-driven approach focusing on robust feature engineering and model validation."}
               </p>
             </section>
@@ -100,54 +100,41 @@ export default function ProjectDetail() {
 
           {/* Technical Highlights */}
           <section>
-            <h2 className="text-2xl font-black text-zinc-900 mb-10 flex items-center gap-4">
-              <div className="w-12 h-12 bg-white border-[3px] border-zinc-900 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <CheckCircle2 size={24} className="text-zinc-900" />
+            <h2 className="text-2xl font-black text-zinc-900 dark:text-white mb-10 flex items-center gap-4">
+              <div className="w-12 h-12 bg-white dark:bg-zinc-800 border-[3px] border-zinc-900 dark:border-zinc-700 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <CheckCircle2 size={24} className="text-zinc-900 dark:text-zinc-100" />
               </div>
               Key Technical Highlights
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {project.highlights.map((highlight, index) => (
-                <div key={index} className="flex gap-4 p-6 bg-white rounded-2xl border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(228,228,231,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all group">
-                  <div className="mt-1 flex-shrink-0 w-7 h-7 rounded-full bg-zinc-900 flex items-center justify-center text-xs font-black text-white">
+                <div key={index} className="flex gap-4 p-6 bg-white dark:bg-zinc-800 rounded-2xl border-[3px] border-zinc-900 dark:border-zinc-700 shadow-[4px_4px_0px_0px_rgba(228,228,231,1)] dark:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all group">
+                  <div className="mt-1 flex-shrink-0 w-7 h-7 rounded-full bg-zinc-900 dark:bg-zinc-100 flex items-center justify-center text-xs font-black text-white dark:text-zinc-900">
                     {index + 1}
                   </div>
-                  <p className="text-zinc-600 text-sm leading-relaxed font-medium">{highlight}</p>
+                  <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed font-medium">{highlight}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Impact/Result */}
-          <section className="bg-zinc-50 p-8 md:p-12 rounded-[2rem] border-[3px] border-zinc-900 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-            <h2 className="text-2xl font-black text-zinc-900 mb-6 flex items-center gap-4">
-              <div className="w-12 h-12 bg-[#D0BFFF] border-[3px] border-zinc-900 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <Zap size={24} className="text-zinc-900" />
-              </div>
-              The Impact
-            </h2>
-            <p className="text-zinc-700 leading-relaxed text-lg font-medium italic">
-              "{project.impact || "The project demonstrated the feasibility of using advanced machine learning techniques to solve complex real-world problems in this domain."}"
-            </p>
-          </section>
-
           {/* Code Snippet Section */}
           {project.codeSnippet && (
-            <section className="pt-12 border-t-4 border-zinc-900">
-              <h2 className="text-2xl font-black text-zinc-900 mb-8 flex items-center gap-4">
-                <div className="w-12 h-12 bg-zinc-900 border-[3px] border-zinc-900 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(99,102,241,0.3)]">
+            <section className="pt-12 border-t-4 border-zinc-900 dark:border-zinc-800">
+              <h2 className="text-2xl font-black text-zinc-900 dark:text-white mb-8 flex items-center gap-4">
+                <div className="w-12 h-12 bg-zinc-900 dark:bg-zinc-950 border-[3px] border-zinc-900 dark:border-zinc-800 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(99,102,241,0.3)]">
                   <Terminal size={24} className="text-white" />
                 </div>
                 Code Snippet
               </h2>
-              <div className="rounded-3xl border-[3px] border-zinc-900 overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                <div className="bg-zinc-800 px-6 py-3 border-b-2 border-zinc-900 flex items-center justify-between">
+              <div className="rounded-3xl border-[3px] border-zinc-900 dark:border-zinc-800 overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <div className="bg-zinc-800 dark:bg-zinc-950 px-6 py-3 border-b-2 border-zinc-900 dark:border-zinc-800 flex items-center justify-between">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500" />
                     <div className="w-3 h-3 rounded-full bg-yellow-500" />
                     <div className="w-3 h-3 rounded-full bg-green-500" />
                   </div>
-                  <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                  <span className="text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">
                     {project.codeLanguage || 'code'}
                   </span>
                 </div>

@@ -1,5 +1,7 @@
 # Luísa Hörlle de Castro - Professional Portfolio
 
+[![Vibe Coding](https://img.shields.io/badge/Vibe-Coding-6366f1?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/topics/vibe-coding)
+
 A clean, modern, and technical portfolio built with React, TypeScript, and Tailwind CSS. This project showcases my journey from Physics to Cognitive Science and Data Science, highlighting key technical projects with deep-dive case studies and code snippets.
 
 ## 🚀 Features

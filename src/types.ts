@@ -27,7 +27,6 @@ export interface Project {
   description: string;
   challenge?: string;
   approach?: string;
-  impact?: string;
   codeSnippet?: string;
   codeLanguage?: string;
   highlights: string[];
