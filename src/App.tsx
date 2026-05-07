@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import GithubProjects from "./components/GithubProjects";
 import CVPage from "./components/CVPage";
