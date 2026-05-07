@@ -2,7 +2,7 @@ import { PortfolioData } from "./types";
 
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "Luísa Hörlle de Castro",
-  titles: ["M.Sc. Data Science Student", "Creative Technologist @ Study Battle", "Hapkido Instructor"],
+  titles: ["M.Sc. Data Science Student", "Developer/Creative Technologist @ Iservport + Study Battle", "Hapkido Instructor"],
   summary: "Data science student interested in applying machine learning to cognition and health. Motivated by finding solutions to real-world problems. In my free time, I enjoy playing the guitar and practising calisthenics.",
   contact: {
     email: "luisa@iservport.com",
@@ -48,10 +48,10 @@ export const PORTFOLIO_DATA: PortfolioData = {
   experience: [
     {
       period: "02.2026 – Present",
-      role: "Creative Technologist",
-      company: "STUDY BATTLE",
+      role: "Developer/Creative Technologist",
+      company: "Iservport + Study Battle",
       bullets: [
-        "Conceived the original product concept and designed the visual identity, creating a unique \"arcade-retro\" aesthetic with high-fidelity glassmorphism.",
+        "Conceived the original product concept and designed the visual identity, creating a unique learning platform to promote joy in learning, rather than low-retention learning.",
         "Implemented the front-end application using advanced agentic-assisted coding workflows to accelerate development and maintain high code quality.",
         "Architected an AI-native educational platform that transforms static documents into personalised gamified quizzes using LLM parsing."
       ]
@@ -62,7 +62,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
       company: "ANTON App",
       bullets: [
         "Created explanations and exercises in the subjects of Mathematics, Portuguese and Science.",
-        "Created social media content and tutorial videos for app users and wrote periodic newsletters."
+        "Created social media content and tutorial videos for app users and wrote periodic newsletters.",
+        "Implemented a sprint-like system for the team to streamline content production and improve internal collaboration."
       ]
     },
     {

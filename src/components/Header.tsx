@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin, Linkedin, Github, FileText, Home, Moon, Sun } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, FileText, Code2, Moon, Sun } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { PORTFOLIO_DATA } from "../constants";
 
@@ -37,7 +37,7 @@ export default function Header() {
               to="/" 
               className={`flex items-center gap-1.5 text-[10px] md:text-xs font-black uppercase tracking-widest transition-all px-3 md:px-4 py-2 rounded-full border-2 ${location.pathname === '/' ? 'bg-zinc-900 text-white border-zinc-900' : 'text-zinc-400 border-transparent hover:border-zinc-100 hover:text-zinc-900'}`}
             >
-              <Home size={14} /> <span className="hidden sm:inline">Home</span>
+              <Code2 size={14} /> <span className="hidden sm:inline">Projects</span>
             </Link>
             <Link 
               to="/cv" 

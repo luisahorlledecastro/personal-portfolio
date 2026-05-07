@@ -29,7 +29,7 @@ function HomePage() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="bg-zinc-900 dark:bg-zinc-800 text-white rounded-[2rem] p-8 md:p-12 border-[3px] border-zinc-900 dark:border-zinc-700 shadow-[8px_8px_0px_0px_rgba(99,102,241,0.2)] relative overflow-hidden"
+          className="bg-zinc-900 text-white rounded-[2rem] p-8 md:p-12 border-[3px] border-zinc-900 shadow-[8px_8px_0px_0px_rgba(99,102,241,0.2)] relative overflow-hidden"
         >
           {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl -mr-24 -mt-24" />
