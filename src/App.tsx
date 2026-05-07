@@ -8,19 +8,21 @@ import Header from "./components/Header";
 import GithubProjects from "./components/GithubProjects";
 import CVPage from "./components/CVPage";
 import ProjectDetail from "./components/ProjectDetail";
-import { PORTFOLIO_DATA } from "./constants";
+import { LOCALIZED_PORTFOLIO_DATA } from "./data/portfolioData";
 import { motion, AnimatePresence } from "motion/react";
 import { Mail, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLanguage } from "./contexts/LanguageContext";
 
 function HomePage() {
+  const { t } = useLanguage();
   return (
     <main className="flex-grow max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full">
       <GithubProjects />
       
       {/* Mini-contact indicator at bottom of projects */}
       <div className="mt-20 border-t-2 border-zinc-100 pt-12 text-center">
-        <p className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.2em] mb-4">Interested in working together?</p>
+        <p className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.2em] mb-4">{t('interested.working')}</p>
         <a 
           href="#contact" 
           onClick={(e) => {
@@ -29,7 +31,7 @@ function HomePage() {
           }}
           className="text-xs font-black text-indigo-500 hover:text-indigo-600 uppercase tracking-widest"
         >
-          Scroll to contact details
+          {t('scroll.contact')}
         </a>
       </div>
     </main>
@@ -53,6 +55,9 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  const { language } = useLanguage();
+  const PORTFOLIO_DATA = LOCALIZED_PORTFOLIO_DATA[language];
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col bg-zinc-50 transition-colors duration-300">

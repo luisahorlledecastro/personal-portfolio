@@ -1,8 +1,11 @@
 import { motion } from "motion/react";
 import { GraduationCap, Briefcase, Code, Languages, Award, Calendar, MapPin } from "lucide-react";
-import { PORTFOLIO_DATA } from "../constants";
+import { LOCALIZED_PORTFOLIO_DATA } from "../data/portfolioData";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function CVPage() {
+  const { language, t } = useLanguage();
+  const PORTFOLIO_DATA = LOCALIZED_PORTFOLIO_DATA[language];
   const { education, experience, projects, skills, languages, summary } = PORTFOLIO_DATA;
 
   return (
@@ -19,7 +22,7 @@ export default function CVPage() {
           <h1 className="text-3xl md:text-4xl font-black mb-3 relative z-10 leading-tight">{PORTFOLIO_DATA.name}</h1>
           <div className="flex flex-wrap gap-4 text-zinc-400 text-[10px] font-black uppercase tracking-widest mb-6 relative z-10">
             <span className="flex items-center gap-1.5"><MapPin size={12} className="text-indigo-400" /> {PORTFOLIO_DATA.contact.location}</span>
-            <span className="flex items-center gap-1.5"><Calendar size={12} className="text-indigo-400" /> Available for opportunities</span>
+            <span className="flex items-center gap-1.5"><Calendar size={12} className="text-indigo-400" /> {t("available")}</span>
           </div>
           <p className="text-lg text-zinc-300 leading-relaxed max-w-2xl italic relative z-10 font-serif">
             "{summary}"
@@ -33,7 +36,7 @@ export default function CVPage() {
               <div className="w-12 h-12 bg-[#FFB7CE] border-[3px] border-zinc-900 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <Briefcase className="text-zinc-900" size={24} />
               </div>
-              <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">Experience</h2>
+              <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">{t("experience")}</h2>
             </div>
             <div className="space-y-12">
               {experience.map((exp, index) => (
@@ -65,7 +68,7 @@ export default function CVPage() {
               <div className="w-12 h-12 bg-[#B2F2BB] border-[3px] border-zinc-900 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <GraduationCap className="text-zinc-900" size={24} />
               </div>
-              <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">Education</h2>
+              <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">{t("education")}</h2>
             </div>
             <div className="space-y-12">
               {education.map((edu, index) => (
@@ -91,11 +94,11 @@ export default function CVPage() {
                 <div className="w-10 h-10 bg-[#D0BFFF] border-[3px] border-zinc-900 rounded-xl flex items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
                   <Code className="text-zinc-900" size={20} />
                 </div>
-                <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">Technical</h2>
+                <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">{t("technical")}</h2>
               </div>
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-4">Languages</h4>
+                  <h4 className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-4">{t("languages")}</h4>
                   <div className="flex flex-wrap gap-2">
                     {skills.languages.map(s => (
                       <span key={s} className="px-4 py-1.5 bg-white text-zinc-900 rounded-full text-xs font-black border-2 border-zinc-900 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">{s}</span>
@@ -103,7 +106,7 @@ export default function CVPage() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-4">Technologies</h4>
+                  <h4 className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-4">{t("technologies")}</h4>
                   <div className="flex flex-wrap gap-2">
                     {skills.technology.map(s => (
                       <span key={s} className="px-4 py-1.5 bg-zinc-50 text-zinc-600 border-2 border-zinc-200 rounded-full text-xs font-bold">{s}</span>
@@ -118,13 +121,13 @@ export default function CVPage() {
                 <div className="w-10 h-10 bg-[#FFD8A8] border-[3px] border-zinc-900 rounded-xl flex items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
                   <Languages className="text-zinc-900" size={20} />
                 </div>
-                <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">Languages</h2>
+                <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">{t("languages")}</h2>
               </div>
               <div className="space-y-4">
                 {languages.map(lang => (
                   <div key={lang} className="flex justify-between items-center p-4 bg-zinc-50 rounded-2xl border-2 border-zinc-100">
                     <span className="text-zinc-900 font-black text-sm">{lang.split(' - ')[0]}</span>
-                    <span className="text-[9px] font-black text-zinc-400 uppercase tracking-widest bg-white px-2 py-1 rounded-lg border-2 border-zinc-200">{lang.split(' - ')[1] || 'Native'}</span>
+                    <span className="text-[9px] font-black text-zinc-400 uppercase tracking-widest bg-white px-2 py-1 rounded-lg border-2 border-zinc-200">{lang.split(' - ')[1] || t('native')}</span>
                   </div>
                 ))}
               </div>
@@ -137,7 +140,7 @@ export default function CVPage() {
               <div className="w-12 h-12 bg-indigo-100 border-[3px] border-zinc-900 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <Award className="text-zinc-900" size={24} />
               </div>
-              <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">Key Projects</h2>
+              <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">{t("key.projects")}</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {projects.map((project, index) => (
@@ -163,7 +166,7 @@ export default function CVPage() {
               <div className="w-12 h-12 bg-[#FFD8A8] border-[3px] border-zinc-900 rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <Award className="text-zinc-900" size={24} />
               </div>
-              <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">Courses & Certificates</h2>
+              <h2 className="text-2xl font-black text-zinc-900 uppercase tracking-tight">{t("courses.certificates")}</h2>
             </div>
             <div className="space-y-8">
               {PORTFOLIO_DATA.certificates.map((cert, index) => (

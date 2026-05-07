@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { Star, GitFork, ExternalLink, Github, Code2, Award, ArrowRight, Search, Filter, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { fetchGithubRepos, GithubRepo } from "../services/githubService";
-import { PORTFOLIO_DATA } from "../constants";
+import { LOCALIZED_PORTFOLIO_DATA } from "../data/portfolioData";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const FEATURED_COLORS = [
   "bg-[#FFB7CE]", // Soft Neon Pink
@@ -13,6 +14,8 @@ const FEATURED_COLORS = [
 ];
 
 export default function GithubProjects() {
+  const { language, t } = useLanguage();
+  const PORTFOLIO_DATA = LOCALIZED_PORTFOLIO_DATA[language];
   const [repos, setRepos] = useState<GithubRepo[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -28,7 +31,7 @@ export default function GithubProjects() {
       setLoading(false);
     }
     loadRepos();
-  }, [username]);
+  }, [username, PORTFOLIO_DATA.projects]);
 
   const featuredProjects = PORTFOLIO_DATA.projects;
 
@@ -42,7 +45,7 @@ export default function GithubProjects() {
     PORTFOLIO_DATA.skills.languages.forEach(l => techSet.add(l));
     PORTFOLIO_DATA.skills.technology.forEach(t => techSet.add(t));
     return Array.from(techSet).sort();
-  }, [featuredProjects, repos]);
+  }, [featuredProjects, repos, PORTFOLIO_DATA.skills]);
 
   const filteredFeatured = useMemo(() => {
     return featuredProjects.filter(p => {
@@ -82,7 +85,7 @@ export default function GithubProjects() {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-indigo-500 transition-colors" size={18} />
           <input 
             type="text"
-            placeholder="Search projects..."
+            placeholder={t("search.projects")}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-12 pr-4 py-3 bg-zinc-50 border-2 border-zinc-100 rounded-2xl text-sm font-bold focus:outline-none focus:border-indigo-500 transition-all"
@@ -92,7 +95,7 @@ export default function GithubProjects() {
         <div className="flex flex-wrap gap-2 justify-center md:justify-end items-center">
           <div className="flex items-center gap-2 mr-2 text-zinc-400">
             <Filter size={16} />
-            <span className="text-[10px] font-black uppercase tracking-widest">Filter:</span>
+            <span className="text-[10px] font-black uppercase tracking-widest">{t("filter")}</span>
           </div>
           <div className="flex flex-wrap gap-2 max-w-md justify-center md:justify-end">
             {selectedTech && (
@@ -108,7 +111,7 @@ export default function GithubProjects() {
               value={selectedTech || ""}
               className="px-4 py-2 bg-zinc-50 border-2 border-zinc-100 rounded-xl text-[10px] font-black uppercase tracking-widest focus:outline-none focus:border-indigo-500 cursor-pointer"
             >
-              <option value="">All Technologies</option>
+              <option value="">{t("all.technologies")}</option>
               {allTech.map(tech => (
                 <option key={tech} value={tech}>{tech}</option>
               ))}
@@ -146,7 +149,7 @@ export default function GithubProjects() {
                     <div className="relative z-10">
                       <div className="mb-4">
                         <div className="inline-block px-3 py-1 bg-indigo-600 text-white text-[9px] font-black uppercase tracking-[0.2em] rounded-full mb-3">
-                          Vibe coding project
+                          {t("vibe.coding")}
                         </div>
                         <h3 className="text-2xl font-black text-zinc-900 mb-1 leading-tight group-hover:text-indigo-600 transition-colors">
                           {project.title}
@@ -157,7 +160,7 @@ export default function GithubProjects() {
                       </div>
                       
                       <div className="mb-4 space-y-2">
-                        <div className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.2em]">Tech Stack</div>
+                        <div className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.2em]">{t("tech.stack")}</div>
                         <div className="flex flex-wrap gap-1.5">
                           {project.technologies.slice(0, 3).map(tech => (
                             <span key={tech} className="text-[8px] font-black text-zinc-500 uppercase bg-zinc-50 px-2 py-0.5 rounded-md border border-zinc-200">
@@ -174,7 +177,7 @@ export default function GithubProjects() {
 
                     <div className="relative z-10 flex items-center justify-between mt-auto pt-4 border-t-2 border-zinc-50">
                       <div className="text-[10px] font-black text-zinc-400 uppercase tracking-widest group-hover:text-indigo-600 group-hover:translate-x-1 transition-all flex items-center gap-2">
-                        View Case Study <ArrowRight size={14} />
+                        {t("view.case.study")} <ArrowRight size={14} />
                       </div>
                       <div className="w-8 h-8 bg-zinc-100 rounded-full flex items-center justify-center text-zinc-400 group-hover:bg-indigo-600 group-hover:text-white transition-all border-2 border-zinc-900">
                         <Code2 size={16} />
@@ -206,7 +209,7 @@ export default function GithubProjects() {
                   <div className="relative z-10">
                     <div className="mb-4">
                       <div className="inline-block px-3 py-1 bg-zinc-900 text-white text-[9px] font-black uppercase tracking-[0.2em] rounded-full mb-3">
-                        Featured
+                        {t("featured")}
                       </div>
                       <h3 className="text-2xl font-black text-zinc-900 mb-1 leading-tight">
                         {project.title}
@@ -218,7 +221,7 @@ export default function GithubProjects() {
                     
                     {/* Skills Spotlight */}
                     <div className="mb-4 space-y-2">
-                      <div className="text-[8px] font-black text-zinc-900/40 uppercase tracking-[0.2em]">Skills Spotlight</div>
+                      <div className="text-[8px] font-black text-zinc-900/40 uppercase tracking-[0.2em]">{t("skills.spotlight")}</div>
                       <div className="flex flex-wrap gap-1.5">
                         {project.technologies.slice(0, 3).map(tech => (
                           <span key={tech} className="text-[8px] font-black text-zinc-900 uppercase bg-white/30 px-2 py-0.5 rounded-md border border-zinc-900/20">
@@ -235,7 +238,7 @@ export default function GithubProjects() {
 
                   <div className="relative z-10 flex items-center justify-between mt-auto pt-4 border-t-2 border-zinc-900/10">
                     <div className="text-[10px] font-black text-zinc-900 uppercase tracking-widest group-hover:translate-x-1 transition-transform flex items-center gap-2">
-                      View Case Study <ArrowRight size={14} />
+                      {t("view.case.study")} <ArrowRight size={14} />
                     </div>
                     <div className="w-8 h-8 bg-zinc-900 rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                       <Code2 size={16} />
@@ -280,7 +283,7 @@ export default function GithubProjects() {
                   {repo.name}
                 </h3>
                 <p className="text-zinc-500 font-medium text-xs line-clamp-2 mb-4 leading-relaxed">
-                  {repo.description || "No description provided."}
+                  {repo.description || t("no.description")}
                 </p>
               </div>
 
@@ -312,13 +315,13 @@ export default function GithubProjects() {
           <div className="w-16 h-16 bg-zinc-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="text-zinc-400" size={24} />
           </div>
-          <h3 className="text-xl font-black text-zinc-900 mb-2 uppercase tracking-tight">No projects found</h3>
-          <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">Try adjusting your search or filters</p>
+          <h3 className="text-xl font-black text-zinc-900 mb-2 uppercase tracking-tight">{t("no.projects")}</h3>
+          <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">{t("adjust.search")}</p>
           <button 
             onClick={() => { setSearchQuery(""); setSelectedTech(null); }}
             className="mt-6 px-6 py-2 bg-zinc-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform"
           >
-            Clear all filters
+            {t("clear.filters")}
           </button>
         </motion.div>
       )}

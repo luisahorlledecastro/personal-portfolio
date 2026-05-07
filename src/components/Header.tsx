@@ -1,10 +1,12 @@
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin, Linkedin, Github, FileText, Code2, Moon, Sun } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, FileText, Code2, Moon, Sun, Globe } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { PORTFOLIO_DATA } from "../constants";
+import { LOCALIZED_PORTFOLIO_DATA } from "../data/portfolioData";
+import { useLanguage, Language } from "../contexts/LanguageContext";
 
 export default function Header() {
-  const { name, titles } = PORTFOLIO_DATA;
+  const { language, setLanguage, t } = useLanguage();
+  const { name, titles } = LOCALIZED_PORTFOLIO_DATA[language];
   const location = useLocation();
 
   return (
@@ -37,14 +39,27 @@ export default function Header() {
               to="/" 
               className={`flex items-center gap-1.5 text-[10px] md:text-xs font-black uppercase tracking-widest transition-all px-3 md:px-4 py-2 rounded-full border-2 ${location.pathname === '/' ? 'bg-zinc-900 text-white border-zinc-900' : 'text-zinc-400 border-transparent hover:border-zinc-100 hover:text-zinc-900'}`}
             >
-              <Code2 size={14} /> <span className="hidden sm:inline">Projects</span>
+              <Code2 size={14} /> <span className="hidden sm:inline">{t("nav.projects")}</span>
             </Link>
             <Link 
               to="/cv" 
               className={`flex items-center gap-1.5 text-[10px] md:text-xs font-black uppercase tracking-widest transition-all px-3 md:px-4 py-2 rounded-full border-2 ${location.pathname === '/cv' ? 'bg-zinc-900 text-white border-zinc-900' : 'text-zinc-400 border-transparent hover:border-zinc-100 hover:text-zinc-900'}`}
             >
-              <FileText size={14} /> <span className="hidden sm:inline">My CV</span>
+              <FileText size={14} /> <span className="hidden sm:inline">{t("nav.cv")}</span>
             </Link>
+            
+            <div className="relative group ml-2 flex items-center">
+              <Globe size={18} className="text-zinc-500 mr-1" />
+              <select
+                value={language}
+                onChange={(e) => setLanguage(e.target.value as Language)}
+                className="bg-transparent text-[10px] font-black text-zinc-900 uppercase focus:outline-none cursor-pointer"
+              >
+                <option value="en">EN</option>
+                <option value="de">DE</option>
+                <option value="pt">PT</option>
+              </select>
+            </div>
           </nav>
         </div>
       </div>
